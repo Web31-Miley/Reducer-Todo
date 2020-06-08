@@ -11,10 +11,13 @@ const TodoList = () => {
             <Form state={state} dispatch={dispatch}/>
             {state.todoList.map( item => {
                 return (
-                    <div onClick={() => dispatch({id: item.id, type: 'REMOVE_ITEM'})} key = {item.id}>
-                        <div>
-                        <span>{item.completed ? '✔': null}</span>
-                        <span>{item.item}</span>
+                    <div key = {item.id}>
+                        <div onClick={() => dispatch({id: item.id, type: 'COMPLETE_ITEM'})}>
+                        <span >{item.completed ? '✔': null}</span>
+                        <span key={item.id}> {item.item} </span>
+                        <button onClick={() => dispatch({id: item.id, type: 'REMOVE_ITEM'})} >
+                            Remove
+                        </button>
                         </div>
                     </div>
                 )
